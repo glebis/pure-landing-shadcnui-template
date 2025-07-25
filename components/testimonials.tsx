@@ -3,61 +3,60 @@ import { Button } from "@/components/ui/button";
 import Marquee from "@/components/ui/marquee";
 import Link from "next/link";
 import React, { ComponentProps } from "react";
-
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    company: "TechCorp",
+    name: "Sarah Chen",
+    designation: "CTO",
+    company: "InnovateTech",
     testimonial:
-      "This product has completely transformed the way we work. The efficiency and ease of use are unmatched!",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+      "Since implementing Wanda last quarter, our team's productivity has skyrocketed. The psychological safety it fosters has completely transformed how we collaborate, especially during our weekly sprint planning sessions. Even our most introverted engineers are actively contributing now.",
+    avatar: "https://randomuser.me/api/portraits/women/1.jpg",
   },
   {
     id: 2,
-    name: "Sophia Lee",
-    designation: "Data Analyst",
-    company: "InsightTech",
+    name: "Marcus Johnson",
+    designation: "HR Director",
+    company: "GlobalCorp",
     testimonial:
-      "This tool has saved me hours of work! The analytics and reporting features are incredibly powerful.",
-    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Wanda has dramatically reduced our staff turnover across all departments. After just two quarters, our employees report feeling their opinions truly matter, and our exit interviews show a remarkable difference. The culture shift is palpable when you walk through our offices.",
+    avatar: "https://randomuser.me/api/portraits/men/2.jpg",
   },
   {
     id: 3,
-    name: "Michael Johnson",
-    designation: "UX Designer",
-    company: "DesignPro",
+    name: "Priya Patel",
+    designation: "Innovation Lead",
+    company: "FutureLabs",
     testimonial:
-      "An amazing tool that simplifies complex tasks. Highly recommended for professionals in the industry.",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+      "Wanda has built within our R&D teams has directly led to breakthrough innovations in our product pipeline. Our ideation sessions used to be dominated by a few voices, but now everyone contributes. Last month's hackathon produced twice the viable prototypes compared to previous events.",
+    avatar: "https://randomuser.me/api/portraits/women/3.jpg",
   },
   {
     id: 4,
-    name: "Emily Davis",
-    designation: "Marketing Specialist",
-    company: "BrandBoost",
+    name: "David Nguyen",
+    designation: "Emergency Department Director",
+    company: "Central Hospital",
     testimonial:
-      "I've seen a significant improvement in our team's productivity since we started using this service.",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+      "During the recent health crisis, our teams using Wanda showed remarkably lower burnout rates compared to other departments. The weekly check-ins and psychological safety framework have been essential for maintaining staff wellbeing. I've noticed fewer sick days and more peer support, especially among our night shift staff.",
+    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
   },
   {
     id: 5,
-    name: "Daniel Martinez",
-    designation: "Full-Stack Developer",
-    company: "CodeCrafters",
+    name: "Elena Rodriguez",
+    designation: "Team Lead",
+    company: "Diverse Solutions",
     testimonial:
-      "The best investment we've made! The support team is also super responsive and helpful.",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+      "Wanda transformed our multicultural team from struggling with communication misunderstandings to thriving on our differences. The focus on quality interactions rather than frequency has visibly improved our project outcomes. Our team now celebrates diverse perspectives instead of seeing them as obstacles.",
+    avatar: "https://randomuser.me/api/portraits/women/5.jpg",
   },
   {
     id: 6,
-    name: "Jane Smith",
-    designation: "Product Manager",
-    company: "InnovateX",
+    name: "James Wilson",
+    designation: "CEO",
+    company: "TalentForge",
     testimonial:
-      "The user experience is top-notch! The interface is clean, intuitive, and easy to navigate.",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+      "The insights Wanda provides on personality traits and team dynamics have been invaluable for our executive leadership. We've restructured our teams based on complementary strengths rather than similar backgrounds, and the results speak for themselves. Our quarterly employee satisfaction surveys show consistent improvement since implementing Wanda's recommendations.",
+    avatar: "https://randomuser.me/api/portraits/men/6.jpg",
   },
 ];
 

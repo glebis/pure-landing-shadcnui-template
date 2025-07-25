@@ -1,48 +1,42 @@
 import {
-  BadgeDollarSign,
-  Route,
-  ShieldCheck,
-  Truck,
-  Undo2,
-  UserRoundCheck,
+  Brain,
+  Users,
+  TrendingUp,
+  Heart,
+  MessageCircle,
+  Shield,
 } from "lucide-react";
 
 const faq = [
   {
-    icon: Undo2,
-    question: "What is your return policy?",
-    answer:
-      "You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
+    icon: Brain,
+    question: "AI coaching is effective as  human coaching",
+    answer: "Research shows AI coaches match human coaches on task-specific competence. A PRISMA-grade systematic review of 16 studies (N=2,312) found high user acceptance and equivalent effectiveness (Passmore, Olafsson, & Tee, 2025).",
   },
   {
-    icon: Route,
-    question: "How do I track my order?",
-    answer:
-      "Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
+    icon: TrendingUp,
+    question: "Psychological safety improves team performance",
+    answer: "High psychological safety can increase team productivity by up to 50% (Ragan Communications, 2023). It acts as the 'engine' that enables learning behaviors and team efficacy to drive performance (Kim, Lee, & Connerton, 2020).",
   },
   {
-    icon: Truck,
-    question: "Do you ship internationally?",
-    answer:
-      "Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
+    icon: Users,
+    question: "Psychological safety has impact on employee retention",
+    answer: "Improving psychological safety can reduce staff turnover by 27%. When employees feel their opinions matter, they're significantly more likely to stay (Gallup research, reported by Ragan Communications, 2023).",
   },
   {
-    icon: BadgeDollarSign,
-    question: "What payment methods do you accept?",
-    answer:
-      "We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
+    icon: Heart,
+    question: "Psychological safety affects diverse teams",
+    answer: "Psychological safety reverses the negative effect of diversity on satisfaction. High psychological safety significantly improves well-being and satisfaction in diverse teams (Bresman & Edmondson, 2022).",
   },
   {
-    icon: ShieldCheck,
-    question: "What if I receive a damaged item?",
-    answer:
-      "Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
+    icon: MessageCircle,
+    question: "Communication quality is more important than frequency",
+    answer: "Communication quality has a significantly stronger relationship with team performance (ρ=0.36) than communication frequency (ρ=0.19). Quality communication also mediates between psychological safety and innovative performance (Marlow et al., 2018).",
   },
   {
-    icon: UserRoundCheck,
-    question: "How can I contact customer support?",
-    answer:
-      "Reach out via email at support@example.com or call us at 1-800-123-4567 for assistance with any inquiries.",
+    icon: Shield,
+    question: "Personality traits predict leadership success",
+    answer: "Conscientiousness is consistently the strongest predictor of job performance across all occupations. However, 'Dark Triad' traits (narcissism, machiavellianism, psychopathy) ultimately create toxic work environments despite short-term leadership emergence (Furnham, 2014).",
   },
 ];
 
