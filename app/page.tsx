@@ -1,4 +1,5 @@
 import CTABanner from "@/components/cta-banner";
+import ChatSection from "@/components/chat-section";
 import FAQ from "@/components/faq";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="pt-16 xs:pt-20 sm:pt-24">
         <Hero />
         <Features />
+        <ChatSection />
         {/* <ThemeShowcase /> */}
         {/* <Pricing /> */}
         <FAQ />

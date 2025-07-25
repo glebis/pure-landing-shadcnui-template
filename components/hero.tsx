@@ -13,7 +13,7 @@ const Hero = () => {
             Beta
           </Badge>
           <h1 className="mt-6 text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
-            AskWanda
+          From First-Time&nbsp;Manager to&nbsp;Fearless&nbsp;Leader
           </h1>
           <p className="mt-6 max-w-[60ch] xs:text-lg">
           Wanda is the AI co-pilot for new managers. Get the confidence,
