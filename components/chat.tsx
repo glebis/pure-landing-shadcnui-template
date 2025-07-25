@@ -26,9 +26,15 @@ export function Chat({ messages, className = "" }: ChatProps) {
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Function to scroll to bottom of chat
+  // Function to scroll to bottom of chat container only
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      // Find the closest scrollable parent container
+      const scrollableParent = messagesEndRef.current.closest('.overflow-y-auto');
+      if (scrollableParent) {
+        scrollableParent.scrollTop = scrollableParent.scrollHeight;
+      }
+    }
   };
 
   // Effect to gradually show messages with a 10-second delay
@@ -40,7 +46,7 @@ export function Chat({ messages, className = "" }: ChatProps) {
     messages.forEach((message, index) => {
       setTimeout(() => {
         setVisibleMessages(prev => [...prev, message]);
-      }, index * 10000); // 10 seconds delay between messages
+      }, index * 3000); // 3 seconds delay between messages
     });
   }, [messages]);
 
@@ -143,7 +149,7 @@ export function ChatExample() {
         <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
         Chat with Wanda
       </h3>
-      <div className="bg-background rounded-lg p-4 mb-4 max-h-[500px] overflow-y-auto">
+      <div className="bg-background rounded-lg p-4 mb-4 h-[620px] overflow-y-auto">
         <Chat messages={exampleMessages} />
       </div>
     </div>
