@@ -54,10 +54,6 @@ const ThemeShowcase = () => {
           </button>
         </div>
         
-        <p className="mb-8 text-muted-foreground">
-          This showcase displays the OKLCH color theme from tweakcn.com applied to this project.
-          OKLCH colors provide better perceptual uniformity compared to HSL colors.
-        </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Base colors */}

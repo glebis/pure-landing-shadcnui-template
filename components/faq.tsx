@@ -43,16 +43,13 @@ const faq = [
 const FAQ = () => {
   return (
     <div
-      id="faq"
+      id="science"
       className="min-h-screen flex items-center justify-center px-6 py-12 xs:py-20"
     >
       <div className="max-w-screen-lg">
         <h2 className="text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tight text-center">
           Science behind Wanda 
         </h2>
-        <p className="mt-3 xs:text-lg text-center text-muted-foreground">
-          Quick answers to common questions about our products and services.
-        </p>
 
         <div className="mt-12 grid md:grid-cols-2 bg-background rounded-xl overflow-hidden outline outline-[1px] outline-border outline-offset-[-1px]">
           {faq.map(({ question, answer, icon: Icon }) => (
