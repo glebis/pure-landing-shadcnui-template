@@ -1,4 +1,4 @@
-# PureLanding - Beautiful Shadcn UI Landing Page
+# AskWanda  - Beautiful Shadcn UI Landing Page
 
 A modern, responsive landing page template built with Next.js, Tailwind CSS, and Shadcn UI, and Shadcn UI Blocks.
 

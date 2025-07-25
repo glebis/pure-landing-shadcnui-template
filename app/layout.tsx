@@ -9,14 +9,14 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "PureLanding - Beautiful Shadcn UI Landing Page",
+  title: "Ask Wanda - AI companion",
   description:
     "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
   keywords: [
-    "PureLanding",
-    "PureLanding Landing Page",
-    "PureLanding Landing Page Template",
-    "PureLanding Page",
+    "Ask Wanda",
+    "Ask Wanda Landing Page",
+    "Ask Wanda Landing Page Template",
+    "Ask Wanda Page",
     "Shadcn UI Landing Page",
     "Shadcn UI Blocks",
     "Shadcn UI",
@@ -30,28 +30,28 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "PureLanding",
+    siteName: "AskWanda",
     locale: "en_US",
-    url: "https://shadcn-landing-page.vercel.app",
-    title: "PureLanding - Beautiful Shadcn UI Landing Page",
+    url: "https://ask-wanda.vercel.app",
+    title: "AskWanda - AI companion",
     description:
-      "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+      "Ask Wanda - AI companion.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PureLanding Preview",
+        alt: "Ask Wanda Preview",
       },
     ],
   },
   authors: [
     {
-      name: "Akash Moradiya",
-      url: "https://shadcnui-blocks.com",
+      name: "Gleb Kalinin",
+      url: "https://github.com/glebkalinin",
     },
   ],
-  creator: "Akash Moradiya",
+  creator: "Gleb Kalinin",
   icons: [
     {
       rel: "icon",
