@@ -47,9 +47,9 @@ const FAQ = () => {
       className="min-h-screen flex items-center justify-center px-6 py-12 xs:py-20"
     >
       <div className="max-w-screen-lg">
-        <h2 className="text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tight text-center">
+        <h1 className="text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-normal tracking-tight text-center">
           Science behind Wanda 
-        </h2>
+        </h1>
 
         <div className="mt-12 grid md:grid-cols-2 rounded-md overflow-hidden">
           {faq.map(({ question, answer, icon: Icon }) => (

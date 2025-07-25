@@ -19,7 +19,7 @@ const Navbar = () => {
             Sign In
           </Button> */}
           {/* <Button className="hidden xs:inline-flex">Get Started</Button> */}
-          <a href="#" className="hidden xs:inline-flex">Made with Oxford</a>
+          <a href="#" className="hidden xs:inline-flex">Proudly made in 🇬🇧 Oxford</a>
 
           {/* Mobile Menu */}
           <div className="md:hidden">

@@ -4,18 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import Script from "next/script";
-
-// Declare the ElevenLabs Convai widget component for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'elevenlabs-convai': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        'agent-id'?: string;
-      }, HTMLElement>;
-    }
-  }
-}
 
 // Define message types
 type MessageType = "user" | "manager";
@@ -32,69 +20,6 @@ interface ChatProps {
   className?: string;
   showAvatars?: boolean;
 }
-
-// Component to create an iframe with ElevenLabs Convai widget
-const IframeElevenLabsWidget = () => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  
-  useEffect(() => {
-    // Create the iframe content with the ElevenLabs widget
-    if (iframeRef.current) {
-      const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
-      
-      if (iframeDoc) {
-        // Write the HTML content to the iframe
-        iframeDoc.open();
-        iframeDoc.write(`
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <style>
-                body {
-                  margin: 0;
-                  padding: 0;
-                  overflow: hidden;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 100%;
-                  font-family: var(--font-sans), sans-serif;
-                }
-                elevenlabs-convai {
-                  display: block;
-                  width: 100%;
-                }
-              </style>
-              <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-            </head>
-            <body>
-              <elevenlabs-convai agent-id="agent_1601k11vehttf9avreac7s1hq4tv"></elevenlabs-convai>
-            </body>
-          </html>
-        `);
-        iframeDoc.close();
-      }
-    }
-  }, []);
-
-  return (
-    <iframe 
-      ref={iframeRef}
-      title="ElevenLabs Convai Widget"
-      width="220"
-      height="110"
-      style={{
-        border: 'none',
-        borderRadius: '8px',
-        overflow: 'hidden',
-        display: 'block',
-        margin: '0 auto'
-      }}
-    />
-  );
-};
 
 export function Chat({ messages, className = "" }: ChatProps) {
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
@@ -160,12 +85,12 @@ export function Chat({ messages, className = "" }: ChatProps) {
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      {visibleMessages.map((message) => {
+      {visibleMessages.map((message, index) => {
         // Extract button info if present
         const { hasButton, buttonText, buttonVariant, cleanContent } = extractButtonInfo(message.content);
         
         return (
-          <React.Fragment key={message.id}>
+          <React.Fragment key={`${message.id}-${index}`}>
             <div
               className={cn("flex animate-fade-in", {
                 "w-max max-w-[75%] ml-auto": message.type === "user",
@@ -182,23 +107,17 @@ export function Chat({ messages, className = "" }: ChatProps) {
               </div>
             </div>
             
-            {/* Button or ElevenLabs widget displayed outside and centered if present */}
+            {/* Button displayed outside and centered if present */}
             {hasButton && (
-              <div className="flex justify-center w-full my-4 animate-fade-in">
-                {!cleanContent.toLowerCase().includes("role-play") ? (
-                  <Button 
-                    variant={buttonVariant as any} 
-                    className="mx-auto flex items-center gap-2"
-                    onClick={() => console.log(`Button clicked: ${buttonText}`)}
-                  >
-                    <Phone className="h-4 w-4" />
-                    {buttonText}
-                  </Button>
-                ) : (
-                  <div className="elevenlabs-widget-container mx-auto">
-                    <IframeElevenLabsWidget />
-                  </div>
-                )}
+              <div className="flex justify-center w-full my-4 animate-fade-in" key={`button-${message.id}-${index}`}>
+                <Button 
+                  variant={buttonVariant as any} 
+                  className="mx-auto flex items-center gap-2"
+                  onClick={() => console.log(`Button clicked: ${buttonText}`)}
+                >
+                  <Phone className="h-4 w-4" />
+                  {buttonText}
+                </Button>
               </div>
             )}
           </React.Fragment>

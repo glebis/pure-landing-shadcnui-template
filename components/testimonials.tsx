@@ -81,12 +81,15 @@ const TestimonialList = () =>
   testimonials.map((testimonial) => (
     <div
       key={testimonial.id}
-      className="min-w-96 max-w-sm bg-accent rounded-xl p-6"
+      className="min-w-96 max-w-sm bg-background rounded-xl p-6"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarFallback className="text-xl font-medium bg-primary text-primary-foreground">
+            <AvatarFallback
+              className="text-xl font-medium "
+            
+            >
               {testimonial.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
