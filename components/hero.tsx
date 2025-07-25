@@ -1,8 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import React from "react";
-import LogoCloud from "./logo-cloud";
 
 const Hero = () => {
   return (
@@ -18,7 +17,7 @@ const Hero = () => {
           <p className="mt-6 max-w-[60ch] xs:text-lg">
           Wanda is the AI co-pilot for new managers. Get the confidence,
           clarity, and skills you need to navigate tough conversations, run
-          motivating 1-on-1s, and unlock your team's true potential—from
+          motivating 1-on-1s, and unlock your team&apos;s true potential—from
           day one.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center sm:justify-center gap-4">

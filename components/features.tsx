@@ -2,15 +2,8 @@ import {
   AlertTriangle,
   DoorOpen,
   MessageSquareOff,
-  ChartPie,
-  Film,
-  MessageCircle,
-  Settings2,
-  User,
 } from "lucide-react";
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Card, CardContent } from "./ui/card";
 import ChatSection from "@/components/chat-section";
 
 const features = [
@@ -46,7 +39,7 @@ const Features = () => {
         {/* Text Column - 5/12 */}
         <div className="w-full lg:w-5/12">
           <p className="text-xl sm:text-2xl tracking-tight text-muted-foreground">
-            You promoted them because they were brilliant individual contributors. But leadership is a completely different skill set. When new managers are unprepared, they aren't just learning on the job—they're experimenting on your team.
+            You promoted them because they were brilliant individual contributors. But leadership is a completely different skill set. When new managers are unprepared, they aren&apos;t just learning on the job—they&apos;re experimenting on your team.
           </p>
         </div>
         

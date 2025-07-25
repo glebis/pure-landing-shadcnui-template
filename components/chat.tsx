@@ -28,7 +28,7 @@ export function Chat({ messages, className = "" }: ChatProps) {
   // Function to extract button info from content
   const extractButtonInfo = (content: string) => {
     const buttonRegex = /\[button text='([^']+)'(?: variant='([^']+)')?\]/g;
-    let match = buttonRegex.exec(content);
+    const match = buttonRegex.exec(content);
     
     if (match) {
       const buttonText = match[1];
@@ -111,7 +111,7 @@ export function Chat({ messages, className = "" }: ChatProps) {
             {hasButton && (
               <div className="flex justify-center w-full my-4 animate-fade-in" key={`button-${message.id}-${index}`}>
                 <Button 
-                  variant={buttonVariant as any} 
+                  variant={buttonVariant as "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"} 
                   className="mx-auto flex items-center gap-2"
                   onClick={() => console.log(`Button clicked: ${buttonText}`)}
                 >
@@ -132,7 +132,6 @@ export function Chat({ messages, className = "" }: ChatProps) {
 
 // Example usage component
 export function ChatExample() {
-  const [inputValue, setInputValue] = useState("");
   
   // Example messages - Conversation between first-time manager and Wanda about feedback
   const exampleMessages: Message[] = [
@@ -186,16 +185,6 @@ export function ChatExample() {
     },
   ];
   
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle message submission logic here
-    // For now, just clear the input
-    setInputValue("");
-  };
 
   return (
     <div className="rounded-xl border bg-card text-card-foreground shadow">
