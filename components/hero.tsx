@@ -10,10 +10,10 @@ const Hero = () => {
       <div className="md:mt-6 flex items-center justify-center">
         <div className="text-center max-w-2xl">
           <Badge className="bg-primary rounded-full py-1 border-none">
-            Bet 🚀
+            Beta 🚀
           </Badge>
           <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
-            Customized Shadcn UI Blocks & Components
+          From First-Time Manager to Fearless Leader
           </h1>
           <p className="mt-6 max-w-[60ch] xs:text-lg">
             Explore a collection of Shadcn UI blocks and components, ready to
