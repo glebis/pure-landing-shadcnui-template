@@ -51,9 +51,9 @@ const FAQ = () => {
           Science behind Wanda 
         </h2>
 
-        <div className="mt-12 grid md:grid-cols-2 bg-background rounded-xl overflow-hidden outline outline-[1px] outline-border outline-offset-[-1px]">
+        <div className="mt-12 grid md:grid-cols-2 rounded-md overflow-hidden">
           {faq.map(({ question, answer, icon: Icon }) => (
-            <div key={question} className="border p-6 -mt-px -ml-px">
+            <div key={question} className="p-6 -mt-px -ml-px">
               <div className="h-8 w-8 xs:h-10 xs:w-10 flex items-center justify-center rounded-full bg-accent">
                 <Icon className="h-4 w-4 xs:h-6 xs:w-6" />
               </div>

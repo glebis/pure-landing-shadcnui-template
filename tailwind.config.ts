@@ -63,6 +63,7 @@ export default {
       animation: {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "fade-in": "fade-in 1.5s ease-in forwards",
       },
       keyframes: {
         marquee: {
@@ -79,6 +80,14 @@ export default {
           },
           to: {
             transform: "translateY(calc(-100% - var(--gap)))",
+          },
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
           },
         },
       },

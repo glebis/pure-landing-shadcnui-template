@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Phone } from "lucide-react";
 
 // Define message types
 type MessageType = "user" | "manager";
@@ -22,6 +24,33 @@ interface ChatProps {
 export function Chat({ messages, className = "" }: ChatProps) {
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Function to extract button info from content
+  const extractButtonInfo = (content: string) => {
+    const buttonRegex = /\[button text='([^']+)'(?: variant='([^']+)')?\]/g;
+    let match = buttonRegex.exec(content);
+    
+    if (match) {
+      const buttonText = match[1];
+      const buttonVariant = match[2] || "default";
+      // Remove the button pattern from content
+      const cleanContent = content.replace(buttonRegex, "").trim();
+      
+      return {
+        hasButton: true,
+        buttonText,
+        buttonVariant,
+        cleanContent
+      };
+    }
+    
+    return {
+      hasButton: false,
+      buttonText: "",
+      buttonVariant: "default",
+      cleanContent: content
+    };
+  };
 
   // Function to scroll to bottom of chat container only
   const scrollToBottom = () => {
@@ -34,7 +63,7 @@ export function Chat({ messages, className = "" }: ChatProps) {
     }
   };
 
-  // Effect to gradually show messages with a 10-second delay
+  // Effect to gradually show messages with a delay
   useEffect(() => {
     // Reset visible messages when the input messages change
     setVisibleMessages([]);
@@ -43,7 +72,7 @@ export function Chat({ messages, className = "" }: ChatProps) {
     messages.forEach((message, index) => {
       setTimeout(() => {
         setVisibleMessages(prev => [...prev, message]);
-      }, index * 3000); // 3 seconds delay between messages
+      }, index * 5000); // 5 seconds delay between messages
     });
   }, [messages]);
 
@@ -54,24 +83,44 @@ export function Chat({ messages, className = "" }: ChatProps) {
 
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      {visibleMessages.map((message) => (
-        <div
-          key={message.id}
-          className={cn("flex", {
-            "w-max max-w-[75%] ml-auto": message.type === "user",
-            "w-max max-w-[75%]": message.type === "manager"
-          })}
-        >
-          <div 
-            className={cn("flex flex-col gap-2 rounded-lg px-3 py-2 text-sm", {
-              "bg-primary text-primary-foreground": message.type === "user",
-              "bg-muted": message.type === "manager"
-            })}
-          >
-            {message.content}
-          </div>
-        </div>
-      ))}
+      {visibleMessages.map((message) => {
+        // Extract button info if present
+        const { hasButton, buttonText, buttonVariant, cleanContent } = extractButtonInfo(message.content);
+        
+        return (
+          <React.Fragment key={message.id}>
+            <div
+              className={cn("flex animate-fade-in", {
+                "w-max max-w-[75%] ml-auto": message.type === "user",
+                "w-max max-w-[75%]": message.type === "manager"
+              })}
+            >
+              <div 
+                className={cn("flex flex-col gap-2 rounded-lg px-3 py-2 text-sm", {
+                  "bg-primary text-primary-foreground": message.type === "user",
+                  "bg-muted": message.type === "manager"
+                })}
+              >
+                {cleanContent}
+              </div>
+            </div>
+            
+            {/* Button displayed outside and centered if present */}
+            {hasButton && (
+              <div className="flex justify-center w-full my-4 animate-fade-in">
+                <Button 
+                  variant={buttonVariant as any} 
+                  className="mx-auto flex items-center gap-2"
+                  onClick={() => console.log(`Button clicked: ${buttonText}`)}
+                >
+                  <Phone className="h-4 w-4" />
+                  {buttonText}
+                </Button>
+              </div>
+            )}
+          </React.Fragment>
+        );
+      })}
       
       {/* Invisible element to scroll to */}
       <div ref={messagesEndRef} />
@@ -83,30 +132,54 @@ export function Chat({ messages, className = "" }: ChatProps) {
 export function ChatExample() {
   const [inputValue, setInputValue] = useState("");
   
-  // Example messages
+  // Example messages - Conversation between first-time manager and Wanda about feedback
   const exampleMessages: Message[] = [
     {
       id: "1",
-      content: "Hi, how can I help you today?",
+      content: "Hi there! I'm Wanda, your AI management coach. How can I support you today?",
       type: "manager",
       timestamp: new Date(),
     },
     {
       id: "2",
-      content: "Hey, I'm having trouble with my account.",
+      content: "Hi Wanda. I'm a new team lead and I need to give feedback to one of my team members who's been missing deadlines. I've never done this before and I'm worried about how they'll take it.",
       type: "user",
       timestamp: new Date(),
     },
     {
       id: "3",
-      content: "What seems to be the problem?",
+      content: "I understand how challenging that can be, especially as a new manager. Giving constructive feedback is a skill that takes practice. Could you tell me a bit more about the situation and what you've observed so far?",
       type: "manager",
       timestamp: new Date(),
     },
     {
       id: "4",
-      content: "I can't log in.",
+      content: "They've missed three deadlines in the past month. They're talented but seem disorganized. I don't want to come across as too harsh, but this is affecting our team's deliverables.",
       type: "user",
+      timestamp: new Date(),
+    },
+    {
+      id: "5",
+      content: "Thank you for sharing that context. Based on what you've described, I'd recommend using the SBI framework for your feedback: Situation, Behavior, Impact. This keeps the feedback specific and objective rather than personal.",
+      type: "manager",
+      timestamp: new Date(),
+    },
+    {
+      id: "6",
+      content: "That sounds helpful, but I'm not sure how to structure that conversation exactly. Do you have an example of how I could start?",
+      type: "user",
+      timestamp: new Date(),
+    },
+    {
+      id: "7",
+      content: "Absolutely! You might start with: 'I'd like to discuss the recent project deadlines (Situation). I've noticed that three deadlines were missed this month (Behavior). This has caused our team to delay deliverables to clients (Impact).' Then ask for their perspective and collaborate on solutions.",
+      type: "manager",
+      timestamp: new Date(),
+    },
+    {
+      id: "8",
+      content: "Would you like to practice this conversation in a voice role-play? I can play the team member while you practice delivering your feedback using the SBI framework [button text='Start role-play' variant='default']",
+      type: "manager",
       timestamp: new Date(),
     },
   ];
@@ -132,31 +205,11 @@ export function ChatExample() {
             </span>
           </span>
           <div className="flex flex-col gap-0.5">
-            <p className="text-sm leading-none font-medium">Sofia Davis</p>
-            <p className="text-muted-foreground text-xs">m@example.com</p>
+            <p className="text-sm leading-none font-medium">Alexandra Davis</p>
+            <p className="text-muted-foreground text-xs">Product Lead</p>
           </div>
         </div>
-        <button
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 ml-auto size-8 rounded-full"
-          data-state="closed"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-plus"
-          >
-            <path d="M5 12h14"></path>
-            <path d="M12 5v14"></path>
-          </svg>
-          <span className="sr-only">New message</span>
-        </button>
+        
       </div>
       <div className="p-6 pt-0">
         <div className="h-[400px] overflow-y-auto">

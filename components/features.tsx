@@ -1,6 +1,7 @@
 import {
-  Blocks,
-  Bot,
+  AlertTriangle,
+  DoorOpen,
+  MessageSquareOff,
   ChartPie,
   Film,
   MessageCircle,
@@ -14,49 +15,32 @@ import ChatSection from "@/components/chat-section";
 
 const features = [
   {
-    icon: Settings2,
-    title: "Customizable Layouts",
+    icon: AlertTriangle,
+    title: "Hidden Friction",
     description:
-      "Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.",
+      "Your new managers lack the experience to spot burnout, resolve conflicts, or re-engage a quiet quitter. Team performance and morale are the first to suffer.",
   },
   {
-    icon: Blocks,
-    title: "Interactive Widgets",
+    icon: DoorOpen,
+    title: "A Revolving Door",
     description:
-      "Embed polls, quizzes, or forms to keep your audience engaged.",
+      "Great employees don't quit companies; they quit managers. The cost of losing a valued team member is far greater than the cost of properly equipping their leader.",
   },
   {
-    icon: Bot,
-    title: "AI-Powered Tools",
+    icon: MessageSquareOff,
+    title: "Broken Communication",
     description:
-      "Generate summaries, auto-format content, or translate into multiple languages seamlessly.",
+      "Without confidence, new managers avoid difficult feedback, leading to unresolved issues that fester and impact the entire team's productivity.",
   },
-  {
-    icon: Film,
-    title: "Media Integrations",
-    description:
-      "Connect with Spotify, Instagram, or your own media library for dynamic visuals and sound.",
-  },
-  {
-    icon: ChartPie,
-    title: "Advanced Analytics",
-    description:
-      "Track engagement, clicks, and user activity with intuitive charts and reports.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Seamless Collaboration",
-    description:
-      "Comment, tag, and assign tasks directly within your documents.",
-  },
+ 
 ];
 
 const Features = () => {
   return (
     <div id="features" className="w-full py-12 xs:py-20 px-6">
-      <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-center mb-12">
+      <h1 className="text-3xl xs:text-4xl sm:text-5xl font-normal tracking-tight text-center mb-12">
         You Promoted Your Best People. <br></br>Are They Ready to Lead?
-      </h2>
+      </h1>
       
       <div className="w-full max-w-screen-md mx-auto flex flex-col lg:flex-row gap-8 items-center">
         {/* Text Column - 5/12 */}
@@ -76,7 +60,7 @@ const Features = () => {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="flex flex-col bg-background border rounded-xl py-6 px-5"
+            className="flex flex-col rounded-xl py-6 px-5"
           >
             <div className="mb-3 h-10 w-10 flex items-center justify-center bg-muted rounded-full">
               <feature.icon className="h-6 w-6" />

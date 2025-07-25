@@ -10,7 +10,7 @@ const testimonials = [
     designation: "CTO",
     company: "InnovateTech",
     testimonial:
-      "Since implementing Wanda last quarter, our team's productivity has skyrocketed. The psychological safety it fosters has completely transformed how we collaborate, especially during our weekly sprint planning sessions. Even our most introverted engineers are actively contributing now.",
+      "Since implementing Wanda, our team's productivity has skyrocketed. The psychological safety it creates has transformed how we collaborate. Even our most introverted engineers are actively contributing to discussions now.",
     avatar: "https://randomuser.me/api/portraits/women/1.jpg",
   },
   {
@@ -19,7 +19,7 @@ const testimonials = [
     designation: "HR Director",
     company: "GlobalCorp",
     testimonial:
-      "Wanda has dramatically reduced our staff turnover across all departments. After just two quarters, our employees report feeling their opinions truly matter, and our exit interviews show a remarkable difference. The culture shift is palpable when you walk through our offices.",
+      "Wanda has significantly reduced our staff turnover. Our employees feel their opinions truly matter, and exit interviews reflect this change. You can feel the culture shift when walking through our offices.",
     avatar: "https://randomuser.me/api/portraits/men/2.jpg",
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     designation: "Innovation Lead",
     company: "FutureLabs",
     testimonial:
-      "Wanda has built within our R&D teams has directly led to breakthrough innovations in our product pipeline. Our ideation sessions used to be dominated by a few voices, but now everyone contributes. Last month's hackathon produced twice the viable prototypes compared to previous events.",
+      "The trust Wanda has built in our R&D teams has led to breakthrough innovations. Our ideation sessions now include everyone, not just the loudest voices. Our latest hackathon produced twice as many viable prototypes as before.",
     avatar: "https://randomuser.me/api/portraits/women/3.jpg",
   },
   {
@@ -37,7 +37,7 @@ const testimonials = [
     designation: "Emergency Department Director",
     company: "Central Hospital",
     testimonial:
-      "During the recent health crisis, our teams using Wanda showed remarkably lower burnout rates compared to other departments. The weekly check-ins and psychological safety framework have been essential for maintaining staff wellbeing. I've noticed fewer sick days and more peer support, especially among our night shift staff.",
+      "During the recent crisis, teams using Wanda showed lower burnout rates than other departments. The weekly check-ins have been crucial for staff wellbeing. I've seen fewer sick days and more peer support, especially on night shifts.",
     avatar: "https://randomuser.me/api/portraits/men/4.jpg",
   },
   {
@@ -46,7 +46,7 @@ const testimonials = [
     designation: "Team Lead",
     company: "Diverse Solutions",
     testimonial:
-      "Wanda transformed our multicultural team from struggling with communication misunderstandings to thriving on our differences. The focus on quality interactions rather than frequency has visibly improved our project outcomes. Our team now celebrates diverse perspectives instead of seeing them as obstacles.",
+      "Wanda transformed how our multicultural team communicates. We now thrive on our differences rather than struggle with them. The focus on quality interactions has improved our projects, and we now celebrate diverse perspectives.",
     avatar: "https://randomuser.me/api/portraits/women/5.jpg",
   },
   {
@@ -55,7 +55,7 @@ const testimonials = [
     designation: "CEO",
     company: "TalentForge",
     testimonial:
-      "The insights Wanda provides on personality traits and team dynamics have been invaluable for our executive leadership. We've restructured our teams based on complementary strengths rather than similar backgrounds, and the results speak for themselves. Our quarterly employee satisfaction surveys show consistent improvement since implementing Wanda's recommendations.",
+      "The insights on personality traits and team dynamics have been invaluable. We've restructured teams based on complementary strengths, and the results speak for themselves. Our employee satisfaction scores have improved consistently since adopting Wanda.",
     avatar: "https://randomuser.me/api/portraits/men/6.jpg",
   },
 ];
@@ -104,7 +104,7 @@ const TestimonialList = () =>
           </Link>
         </Button>
       </div>
-      <p className="mt-5 text-[17px]">{testimonial.testimonial}</p>
+      <p className="mt-5 text-[15px] leading-relaxed">{testimonial.testimonial}</p>
     </div>
   ));
 
