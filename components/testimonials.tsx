@@ -72,9 +72,6 @@ const Testimonials = () => (
         <Marquee pauseOnHover className="[--duration:20s]">
           <TestimonialList />
         </Marquee>
-        <Marquee pauseOnHover reverse className="mt-0 [--duration:20s]">
-          <TestimonialList />
-        </Marquee>
       </div>
     </div>
   </div>

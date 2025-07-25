@@ -42,7 +42,7 @@ const Features = () => {
         You Promoted Your Best People. <br></br>Are They Ready to Lead?
       </h1>
       
-      <div className="w-full max-w-screen-md mx-auto flex flex-col lg:flex-row gap-8 items-center">
+      <div className="w-full max-w-screen-lg mx-auto flex flex-col lg:flex-row gap-8 items-center">
         {/* Text Column - 5/12 */}
         <div className="w-full lg:w-5/12">
           <p className="text-xl sm:text-2xl tracking-tight text-muted-foreground">
