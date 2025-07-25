@@ -83,8 +83,8 @@ const IframeElevenLabsWidget = () => {
     <iframe 
       ref={iframeRef}
       title="ElevenLabs Convai Widget"
-      width="200"
-      height="70"
+      width="220"
+      height="110"
       style={{
         border: 'none',
         borderRadius: '8px',
