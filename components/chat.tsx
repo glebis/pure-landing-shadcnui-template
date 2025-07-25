@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { SpeakerWaveIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 
 // Define message types
@@ -56,47 +53,22 @@ export function Chat({ messages, className = "" }: ChatProps) {
   }, [visibleMessages]);
 
   return (
-    <div className={cn("flex flex-col space-y-4", className)}>
+    <div className={cn("flex flex-col gap-4", className)}>
       {visibleMessages.map((message) => (
         <div
           key={message.id}
           className={cn("flex", {
-            "justify-end": message.type === "user",
-            "justify-start": message.type === "manager"
+            "w-max max-w-[75%] ml-auto": message.type === "user",
+            "w-max max-w-[75%]": message.type === "manager"
           })}
         >
-          <div className="flex items-start max-w-[80%]">
-            {message.type === "manager" && (
-              <Avatar className="h-8 w-8 mr-2 border-2 border-accent">
-                <AvatarImage src="/manager-avatar.svg" alt="Manager" />
-                <AvatarFallback className="bg-primary text-primary-foreground">M</AvatarFallback>
-              </Avatar>
-            )}
-            
-            <div>
-              <Card className={cn({
-                "bg-primary text-primary-foreground shadow-md": message.type === "user",
-                "bg-muted shadow-sm": message.type === "manager"
-              })}>
-                <CardContent className="p-3 py-2.5 text-sm">
-                  {message.content}
-                </CardContent>
-              </Card>
-              
-              {message.type === "manager" && (
-                <div className="flex items-center mt-1 ml-1 text-xs text-muted-foreground">
-                  <SpeakerWaveIcon className="h-3 w-3 mr-1" />
-                  <span>transcribed</span>
-                </div>
-              )}
-            </div>
-            
-            {message.type === "user" && (
-              <Avatar className="h-8 w-8 ml-2 border-2 border-secondary">
-                <AvatarImage src="/user-avatar.svg" alt="User" />
-                <AvatarFallback className="bg-secondary text-secondary-foreground">U</AvatarFallback>
-              </Avatar>
-            )}
+          <div 
+            className={cn("flex flex-col gap-2 rounded-lg px-3 py-2 text-sm", {
+              "bg-primary text-primary-foreground": message.type === "user",
+              "bg-muted": message.type === "manager"
+            })}
+          >
+            {message.content}
           </div>
         </div>
       ))}
@@ -109,48 +81,121 @@ export function Chat({ messages, className = "" }: ChatProps) {
 
 // Example usage component
 export function ChatExample() {
+  const [inputValue, setInputValue] = useState("");
+  
   // Example messages
   const exampleMessages: Message[] = [
     {
       id: "1",
-      content: "Hello! I'm Wanda, your AI assistant. How can I help you today with your project?",
+      content: "Hi, how can I help you today?",
       type: "manager",
       timestamp: new Date(),
     },
     {
       id: "2",
-      content: "I need help setting up a new React component for my dashboard.",
+      content: "Hey, I'm having trouble with my account.",
       type: "user",
       timestamp: new Date(),
     },
     {
       id: "3",
-      content: "I'd be happy to help with that! Let's start by creating a basic structure for your dashboard component. What specific features do you need in this dashboard?",
+      content: "What seems to be the problem?",
       type: "manager",
       timestamp: new Date(),
     },
     {
       id: "4",
-      content: "I need charts, a summary section, and maybe some notifications.",
+      content: "I can't log in.",
       type: "user",
       timestamp: new Date(),
     },
-    {
-      id: "5",
-      content: "Great choices! For charts, we could use Chart.js or Recharts. The summary section can be built with cards, and for notifications, we can implement a dropdown menu or a sidebar. Would you like me to show you some code examples?",
-      type: "manager",
-      timestamp: new Date(),
-    },
   ];
+  
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle message submission logic here
+    // For now, just clear the input
+    setInputValue("");
+  };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 border rounded-xl shadow-md bg-card">
-      <h3 className="text-xl font-medium mb-6 flex items-center">
-        <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-        Chat with Wanda
-      </h3>
-      <div className="bg-background rounded-lg p-4 mb-4 h-[620px] overflow-y-auto">
-        <Chat messages={exampleMessages} />
+    <div className="rounded-xl border bg-card text-card-foreground shadow">
+      <div className="space-y-1.5 p-6 flex flex-row items-center">
+        <div className="flex items-center gap-4">
+          <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border">
+            <span className="flex h-full w-full items-center justify-center rounded-full bg-muted">
+              S
+            </span>
+          </span>
+          <div className="flex flex-col gap-0.5">
+            <p className="text-sm leading-none font-medium">Sofia Davis</p>
+            <p className="text-muted-foreground text-xs">m@example.com</p>
+          </div>
+        </div>
+        <button
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 ml-auto size-8 rounded-full"
+          data-state="closed"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-plus"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span className="sr-only">New message</span>
+        </button>
+      </div>
+      <div className="p-6 pt-0">
+        <div className="h-[400px] overflow-y-auto">
+          <Chat messages={exampleMessages} />
+        </div>
+      </div>
+      <div className="flex items-center p-6 pt-0">
+        {/* <form className="relative w-full" onSubmit={handleSubmit}>
+          <input
+            className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm flex-1 pr-10"
+            id="message"
+            placeholder="Type your message..."
+            autoComplete="off"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 absolute top-1/2 right-2 size-6 -translate-y-1/2 rounded-full"
+            type="submit"
+            disabled={!inputValue.trim()}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-arrow-up size-3.5"
+            >
+              <path d="m5 12 7-7 7 7"></path>
+              <path d="M12 19V5"></path>
+            </svg>
+            <span className="sr-only">Send</span>
+          </button>
+        </form> */}
       </div>
     </div>
   );
